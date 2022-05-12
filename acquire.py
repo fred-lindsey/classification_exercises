@@ -9,10 +9,10 @@ def get_connection(db, user=env.user, host=env.host, password=env.password):
 
 
 def get_titanic_data(use_cache=True):
-    filename = "titanic.csv"
+    filename = "titanic.csv" #use local csv first
     if os.path.isfile(filename) and use_cache:
         return pd.read_csv(filename)
-    else:
+    else:                   #otherwise, pull the data from a SQL query
         df = pd.read_sql('SELECT * FROM passengers', get_connection('titanic_db'))
         df.to_csv(filename, index=False)
         return df
@@ -40,5 +40,3 @@ def get_telco_data(use_cache=True):
         , get_connection('telco_churn'))
         df.to_csv(filename, index=False)
         return df
-
-

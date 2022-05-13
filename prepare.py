@@ -1,3 +1,19 @@
+
+# Functions in this PREPARE file:
+
+# prep_iris(): function notes below
+
+# prep_titanic(): function notes below
+
+# prep_telco(): function notes below
+
+#_____________________________________________________________________________
+
+# Required imports for these files:
+
+import pandas as pd
+
+#_____________________________________________________________________________
 def prep_iris(df):
     """
     Takes in the iris dataframe and returns a cleaned dataframe

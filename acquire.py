@@ -1,3 +1,16 @@
+# Functions in this ACQUIRE file:
+
+# get_connection('db') : retrieves databases for use, by name
+
+# get_titanic_data(): acquires titanic dataset
+
+# get_iris_db(): acquires iris dataset (unmerged)
+
+# get_telco_data(): acquires TELCO dataset
+
+#_____________________________________________________________________________
+
+# Required imports for these files:
 
 import env
 import pandas as pd

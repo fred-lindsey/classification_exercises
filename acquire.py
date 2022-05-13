@@ -6,7 +6,7 @@ import os
 def get_connection(db, user=env.user, host=env.host, password=env.password):
     return f'mysql+pymysql://{user}:{password}@{host}/{db}'
 
-
+#______________________________________________________________________________
 
 def get_titanic_data(use_cache=True):
     filename = "titanic.csv" #use local csv first
@@ -16,6 +16,7 @@ def get_titanic_data(use_cache=True):
         df = pd.read_sql('SELECT * FROM passengers', get_connection('titanic_db'))
         df.to_csv(filename, index=False)
         return df
+#______________________________________________________________________________
 
 def get_iris_db(use_cache=True):
     filename = "iris.csv"
@@ -25,6 +26,8 @@ def get_iris_db(use_cache=True):
         df = pd.read_sql('SELECT * FROM species', get_connection('iris_db'))
         df.to_csv(filename, index=False)
         return df
+
+#__________________________________________________________________________________
 
 def get_telco_data(use_cache=True):
     filename = "telco.csv"
@@ -40,3 +43,5 @@ def get_telco_data(use_cache=True):
         , get_connection('telco_churn'))
         df.to_csv(filename, index=False)
         return df
+
+#__________________________________________________________________________________

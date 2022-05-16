@@ -26,9 +26,9 @@ def prep_iris(df):
     #renamed species name to species
     df = df.rename(columns={"species_name" : "species"})
     #encoded categorical variables
-    dummy_df = pd.get_dummies(df[['species']], dummy_na=False, drop_first=[True, True])
+    # dummy_df = pd.get_dummies(df[['species']], dummy_na=False, drop_first=[True, True])
     #concat the table
-    df = pd.concat([df, dummy_df], axis=1)
+    # df = pd.concat([df, dummy_df], axis=1)
 
     return df
 
@@ -49,10 +49,10 @@ def prep_titanic(df):
     cols_to_drop = ['embarked', 'class', 'passenger_id']
     df = df.drop(columns = cols_to_drop)
     # encode the categorical data
-    dummy_df = pd.get_dummies(df[['embark_town', 'sex']], 
-                          dummy_na = False, drop_first=[True, True])
+    # dummy_df = pd.get_dummies(df[['embark_town', 'sex']], 
+    #                       dummy_na = False, drop_first=[True, True])
     #concat the two dataframes
-    df = pd.concat([df, dummy_df], axis=1)
+    # df = pd.concat([df, dummy_df], axis=1)
     
     return df
 
@@ -82,10 +82,10 @@ def prep_telco(df):
     df['streaming_movies'] = df.streaming_movies.map({'Yes': 1, 'No': 0})
     df['paperless_billing'] = df.paperless_billing.map({'Yes': 1, 'No': 0})
     #Get dummies for non-binary categorical variables:
-    dummy_df = pd.get_dummies(df[['contract_type', 'payment_type', 
-                              'internet_service_type']],
-                              dummy_na = False, 
-                              drop_first=[True, True, True])
+    # dummy_df = pd.get_dummies(df[['contract_type', 'payment_type', 
+    #                           'internet_service_type']],
+    #                           dummy_na = False, 
+    #                           drop_first=[True, True, True])
     #concatenate the two dataframes
-    df = pd.concat([df, dummy_df], axis=1)
+    # df = pd.concat([df, dummy_df], axis=1)
     return df

@@ -36,7 +36,10 @@ def get_iris_db(use_cache=True):
     if os.path.isfile(filename) and use_cache:
         return pd.read_csv(filename)
     else:
-        df = pd.read_sql('SELECT * FROM species', get_connection('iris_db'))
+        df = pd.read_sql('''
+        SELECT * FROM species
+        JOIN measurements USING(species_id)
+        ''', get_connection('iris_db'))
         df.to_csv(filename, index=False)
         return df
 

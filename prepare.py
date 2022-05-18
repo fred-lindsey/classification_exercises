@@ -38,7 +38,7 @@ def prep_titanic(df):
     """
     Takes in the titanic dataframe and returns a cleaned dataframe.
     Arguments: takes in the dataset and removes duplicates, encodes
-    categroical data
+    categorical data
     Returns: cleaned dataset
     
     
@@ -73,22 +73,17 @@ def prep_telco(df):
     df = df[df.total_charges != ""]
     #convert to correct data type:
     df['total_charges'] = df.total_charges.astype(float)
-    #Convert binary categorical to numeric
-    df['gender'] = df.gender.map({'Female': 1, 'Male': 0})
-    df['churn'] = df.churn.map({'Yes': 1, 'No': 0})
-    df['partner'] = df.partner.map({'Yes': 1, 'No': 0})
-    df['dependents'] = df.dependents.map({'Yes': 1, 'No': 0})
-    df['tech_support'] = df.tech_support.map({'Yes': 1, 'No': 0})
-    df['streaming_tv'] = df.streaming_tv.map({'Yes': 1, 'No': 0})
-    df['streaming_movies'] = df.streaming_movies.map({'Yes': 1, 'No': 0})
-    df['paperless_billing'] = df.paperless_billing.map({'Yes': 1, 'No': 0})
     #Get dummies for non-binary categorical variables:
-    dummy_df = pd.get_dummies(df[['phone_service', 'mulitple lines',
-                                'online_security', 'online_backup' 
-                                'contract_type', 'payment_type', 
-                                'internet_service_type']],
+    dummy_df = pd.get_dummies(df[[
+        'gender', 'senior_citizen', 'partner', 'dependents',
+        'phone_service', 'multiple_lines', 'online_security',
+       'online_backup', 'device_protection', 'tech_support', 'streaming_tv',
+       'streaming_movies', 'paperless_billing','churn', 'contract_type', 'payment_type',
+       'internet_service_type']],
                                 dummy_na = False, 
                                 drop_first=[True, True, True])
     #concatenate the two dataframes
     df = pd.concat([df, dummy_df], axis=1)
     return df
+
+    #['internet_service_type_id', 'payment_type_id', 'contract_type_id']
